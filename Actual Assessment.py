@@ -118,4 +118,20 @@ def search_menu():
     # Print out the stored 'text' in the Easygui with a title of 'SEARCH RESULT'.
     easygui.msgbox(text, title = "SEARCH RESULT")
 
+# This is the function to remove any cards if needed.
+def remove_menu():
+    # If the system detects no cards available in the card list, it will print 'There is no cards available to remove.'.
+    if not cards:
+        easygui.msgbox("There is no cards available to remove.", title = "NOTE")
+        return
+    
+    # The line below will provide the buttons for the user to utilise. For example, if the user wants remove card '1', they can do so by clicking the button.
+    remove_card = easygui.buttonbox("Choose an option below to remove:", title = "REMOVE PAGE", choices = list(cards.keys()))
+
+    # If it detects interaction, the system is going to remove it away from the card list.
+    if remove_card:
+        del cards[remove_card]
+    
+    # Print out the success message when the chosen card has been removed in the interface.
+    easygui.msgbox(f"{remove_card} has been successfully removed!", title = "SUCCESS")
 
