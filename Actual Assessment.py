@@ -111,7 +111,7 @@ def search_menu():
         # Store the chosen card's name and print out the card's name that the user chose to search.
         text = f"\n[{search_card}]:\n"
         # For every card name, and ability in the cards:
-        for card_names, abilities in cards[search_card]:
+        for card_names, abilities in cards[search_card].items():
             # Add the information into the 'text' and print out them in the Easygui later.
             text += f"{card_names} - {abilities}\n"
     
