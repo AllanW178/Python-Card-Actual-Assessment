@@ -106,8 +106,8 @@ def search_menu():
     # Here are the options/buttons for the user to choose and search them.
     search_card = easygui.buttonbox("Choose an option below to search:", title = "SEARCH PAGE", choices = list(cards.keys()))
 
-    # If it detects card:
-    if search_card:
+    # Check if the chosen card is in the card list.
+    if search_card in cards:
         # Store the chosen card's name and print out the card's name that the user chose to search.
         text = f"\n[{search_card}]:\n"
         # For every card name, and ability in the cards:
@@ -128,8 +128,8 @@ def remove_menu():
     # The line below will provide the buttons for the user to utilise. For example, if the user wants remove card '1', they can do so by clicking the button.
     remove_card = easygui.buttonbox("Choose an option below to remove:", title = "REMOVE PAGE", choices = list(cards.keys()))
 
-    # If it detects interaction, the system is going to remove it away from the card list.
-    if remove_card:
+    # If the chosen card is detected in the card list, it is going to be removed.
+    if remove_card in cards:
         del cards[remove_card]
     
     # Print out the success message when the chosen card has been removed in the interface.
