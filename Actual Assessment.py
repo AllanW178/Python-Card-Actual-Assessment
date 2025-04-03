@@ -118,6 +118,7 @@ def search_menu():
     # Print out the stored 'text' in the Easygui with a title of 'SEARCH RESULT'.
     easygui.msgbox(text, title = "SEARCH RESULT")
 
+
 # This is the function to remove any cards if needed.
 def remove_menu():
     # If the system detects no cards available in the card list, it will print 'There is no cards available to remove.'.
@@ -135,3 +136,32 @@ def remove_menu():
     # Print out the success message when the chosen card has been removed in the interface.
     easygui.msgbox(f"{remove_card} has been successfully removed!", title = "SUCCESS")
 
+# This is a main menu, the user can manipulate all the functions here (eg., Display Card, Search Card, Remove Card, Add Card, Modify Card & Exit the program).
+def main():
+    # A while loop so the program will keep going until the user interacts with the '[EXIT]' button.
+    while True:
+        # The line below are the main buttons for the user to control. For example, it's up to the user whether he/she wants to use Display Card, Search Card, or etc.
+        choice = easygui.buttonbox("Choose an option below:", title = "MAIN MENU", choices = ["Display Card", "Search Card", "Remove Card", "Add Card", "Edit Card", '[EXIT]'])
+
+        # Check if the choice is Display Card. If it is, conduct the 'Display_menu()' function below.
+        if choice == 'Display Card':
+            display_menu()
+        # Check if the choice is Search Card. If it is, conduct the 'Search_menu()' function below.
+        elif choice == 'Search Card':
+            search_menu()
+        # Check if the choice is Remove Card. If it is, conduct the 'Remove_menu()' function below.
+        elif choice == 'Remove Card':
+            remove_menu()
+        # Check if the choice is Add Card Card. If it is, conduct the 'Add_menu()' function below.
+        elif choice == 'Add Card':
+            pass
+        # Check if the choice is Edit Card. If it is, conduct the 'Modify_menu()' function below.
+        elif choice == 'Edit Card':
+            pass
+        # Check if the choice is exiting the program. If it is, the program will print a message and suspend.
+        elif choice == '[EXIT]':
+            easygui.msgbox("Thanks for your visiting!", title = "GOOBYE")
+            break
+
+#Call the Main function here to make the whole program work.
+main()
