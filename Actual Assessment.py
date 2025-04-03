@@ -95,3 +95,27 @@ def display_menu():
 
     # Use Easygui message box to print out all the stored information from 'text' in an interface.
     easygui.msgbox(text, title = "DISPLAY MENU")
+
+# Search menu function; this allowed users to search cards with some interactable buttons.
+def search_menu():
+    # If there is no card in the card lists, print the text "There is no cards available to display.".
+    if not cards:
+        easygui.msgbox("There is no cards available to search.", title = "NOTE")
+        return
+
+    # Here are the options/buttons for the user to choose and search them.
+    search_card = easygui.buttonbox("Choose an option below to search:", title = "SEARCH PAGE", choices = list(cards.keys()))
+
+    # If it detects card:
+    if search_card:
+        # Store the chosen card's name and print out the card's name that the user chose to search.
+        text = f"\n[{search_card}]:\n"
+        # For every card name, and ability in the cards:
+        for card_names, abilities in cards[search_card]:
+            # Add the information into the 'text' and print out them in the Easygui later.
+            text += f"{card_names} - {abilities}\n"
+    
+    # Print out the stored 'text' in the Easygui with a title of 'SEARCH RESULT'.
+    easygui.msgbox(text, title = "SEARCH RESULT")
+
+
