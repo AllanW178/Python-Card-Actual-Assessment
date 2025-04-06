@@ -1,3 +1,21 @@
+
+'''
+Essential introdution: When the users use this program, an interface will show up with six different buttons for them to utilise.
+The buttons are 'Display Card', 'Search Card', 'Remove Card', 'Add Card', 'Edit Card' & 'Exiting the program'.
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+# Import the Easygui module
 import easygui
 
 # Card lists to store each card and each of their corresponding value.
