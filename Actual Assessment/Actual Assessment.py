@@ -211,7 +211,7 @@ def add_menu():
     # Below are four while loops (four different abilities) to check the valiadity for user's entered values. If not, the program will tell them to try again.
     while True:
         try:
-            strength = int(easygui.enterbox("Enter the strength for your card (1-25): "))
+            strength = int(easygui.enterbox(f"Enter the strength for {add_card} (1-25): "))
             if strength < 1 or strength > 25:
                 easygui.msgbox(f"Your strength value must be between 1-25. Currently, your value is {strength}.")
             else:
@@ -221,9 +221,9 @@ def add_menu():
 
     while True:
         try:
-            speed = int(easygui.enterbox("Enter the speed for your card (1-25): "))
+            speed = int(easygui.enterbox(f"Enter the speed for {add_card} (1-25): "))
             if speed < 1 or speed > 25:
-                easygui.msgbox(f"Your strength value must be between 1-25. Currently, your value is {speed}.")
+                easygui.msgbox(f"Your strength value must be between 1-25. Currentlyss, your value is {speed}.")
             else:
                 break
         except ValueError:
@@ -231,7 +231,7 @@ def add_menu():
 
     while True:
         try:
-            stealth = int(easygui.enterbox("Enter the stealth for your card (1-25): "))
+            stealth = int(easygui.enterbox(f"Enter the stealth for {add_card} (1-25): "))
             if stealth < 1 or stealth > 25:
                 easygui.msgbox(f"Your stealth value must be between 1-25. Currently, your value is {stealth}.")
             else:
@@ -241,7 +241,7 @@ def add_menu():
 
     while True:
         try:
-            cunning = int(easygui.enterbox("Enter the cunning for your card (1-25) : "))
+            cunning = int(easygui.enterbox(f"Enter the cunning for {add_card} (1-25) : "))
             if cunning < 1 or cunning > 25:
                 easygui.msgbox(f"Your cunning value must be between 1-25. Currently, your value is {cunning}.")
             else:
@@ -249,7 +249,7 @@ def add_menu():
         except ValueError:
             easygui.msgbox("Please enter a valid number from 1-25.")
 
-    #After the users have entered the correct values for the four abilities, they will be recorded correspondingly into their dictionary.
+    # After the users have entered the correct values for the four abilities, they will be recorded correspondingly into their dictionary.
     cards[add_card] = {
         'Strength': strength,
         'Speed': speed,
@@ -258,7 +258,7 @@ def add_menu():
     }
 
     # This is a final message to inform the users that their card has been added successfully. 
-    easygui.msgbox(f"Your card '{add_card}' has been successfully added!", title = "SUCCESS")
+    easygui.msgbox(f"Your card '{add_card}' has been successfully added!\n\nIf you would like to modify/edit anything for your card, head to the 'Edit Card' button.", title = "SUCCESS")
 
 
 # This is a main menu, the user can manipulate all the functions here (eg., Display Card, Search Card, Remove Card, Add Card, Modify Card & Exit the program).
@@ -285,7 +285,7 @@ def main():
             pass
         # Check if the choice is exiting the program. If it is, the program will print a message and suspend.
         elif choice == '[EXIT]':
-            easygui.msgbox("Thanks for your visiting!", title = "GOOBYE")
+            easygui.msgbox("You have exited the program", title = "GOOBYE")
             break
 
 #Call the Main function here to make the whole program work.
