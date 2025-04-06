@@ -212,7 +212,7 @@ def add_menu():
     while True:
         try:
             strength = int(easygui.enterbox("Enter the strength for your card (1-25): "))
-            if strength < 0 or strength > 25:
+            if strength < 1 or strength > 25:
                 easygui.msgbox(f"Your strength value must be between 1-25. Currently, your value is {strength}.")
             else:
                 break
@@ -222,7 +222,7 @@ def add_menu():
     while True:
         try:
             speed = int(easygui.enterbox("Enter the speed for your card (1-25): "))
-            if speed < 0 or speed > 25:
+            if speed < 1 or speed > 25:
                 easygui.msgbox(f"Your strength value must be between 1-25. Currently, your value is {speed}.")
             else:
                 break
@@ -232,7 +232,7 @@ def add_menu():
     while True:
         try:
             stealth = int(easygui.enterbox("Enter the stealth for your card (1-25): "))
-            if stealth < 0 or stealth > 25:
+            if stealth < 1 or stealth > 25:
                 easygui.msgbox(f"Your stealth value must be between 1-25. Currently, your value is {stealth}.")
             else:
                 break
@@ -242,7 +242,7 @@ def add_menu():
     while True:
         try:
             cunning = int(easygui.enterbox("Enter the cunning for your card (1-25) : "))
-            if cunning < 0 or cunning > 25:
+            if cunning < 1 or cunning > 25:
                 easygui.msgbox(f"Your cunning value must be between 1-25. Currently, your value is {cunning}.")
             else:
                 break
@@ -259,7 +259,7 @@ def add_menu():
 
     # This is a final message to inform the users that their card has been added successfully. 
     easygui.msgbox(f"Your card '{add_card}' has been successfully added!", title = "SUCCESS")
-    
+
 
 # This is a main menu, the user can manipulate all the functions here (eg., Display Card, Search Card, Remove Card, Add Card, Modify Card & Exit the program).
 def main():
