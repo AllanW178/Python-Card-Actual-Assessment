@@ -188,8 +188,10 @@ def remove_menu():
 
 
 
-
+# [I HAVE CHANGED TO A DIFFERENT VERSION THAT ALIGNS WITH THE REQUIREMENT]
 # [THE CODE BELOW IS A FIXED VERSION FROM THE CODE ABOVE THAT ONLY ALLOWS THE USERS TO ENTER THE VALUES FOR EACH ABILITY]:
+
+
 
 # This is function where the users can add their own values for their given abilities.
 def add_menu():
