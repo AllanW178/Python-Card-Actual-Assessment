@@ -281,16 +281,16 @@ def add_menu():
     easygui.msgbox(f"Your card '{add_card}' has been successfully added!\n\nIf you would like to modify/edit anything for your card, head to the 'Edit Card' button.", title = "SUCCESS")
 
 # This is the function for the users to modify any details in their card if they unintentionally typed a wrong information.
-def modify_card():
-    if not card:
-        easygui.msgbox("Sorry, there is no card available to modify.", title="NOTE")
+def edit_menu():
+    if not cards:
+        easygui.msgbox("Sorry, there is no card available to modify.", title = "NOTE")
         return
     
-    name = easygui.buttonbox("Choose a card to modify:", title="MODIFY CARD", choices=list(card.keys()))
+    name = easygui.buttonbox("Choose a card to modify:", title = "EDIT CARD", choices = list(cards.keys()))
     if not name:
         return
     
-    current = card[name]
+    current = cards[name]
     
     msg = f"Current stats for {name}:\n"
     for stat, value in current.items():
@@ -302,11 +302,17 @@ def modify_card():
     if change == "Cancel":
         return
     
-    new_value = easygui.integerbox(f"Enter new value for {change} (1-25):", title = "NEW VALUE", min = 1, max = 25)
-    if new_value is None:
-        return
+    while True:
+        try:
+            new_value = int(easygui.enterbox(f"Enter new value for {change} (1-25):", title = "NEW VALUE"))
+            if new_value < 1 or new_value > 25:
+                easygui.msgbox(f"Your value must be between 1-25, you've entered {new_value}.")
+            else:
+                break
+        except ValueError:
+            easygui.msgbox("Please enter a valid number from 1-25.", title = "NOTE")
     
-    card[name][change] = new_value
+    cards[name][change] = new_value
     easygui.msgbox(f"{name}'s {change} has been updated to {new_value}", title = "SUCCESS")
 
 
