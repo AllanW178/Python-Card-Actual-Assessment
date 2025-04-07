@@ -280,6 +280,36 @@ def add_menu():
     # This is a final message to inform the users that their card has been added successfully. 
     easygui.msgbox(f"Your card '{add_card}' has been successfully added!\n\nIf you would like to modify/edit anything for your card, head to the 'Edit Card' button.", title = "SUCCESS")
 
+# This is the function for the users to modify any details in their card if they unintentionally typed a wrong information.
+def modify_card():
+    if not card:
+        easygui.msgbox("Sorry, there is no card available to modify.", title="NOTE")
+        return
+    
+    name = easygui.buttonbox("Choose a card to modify:", title="MODIFY CARD", choices=list(card.keys()))
+    if not name:
+        return
+    
+    current = card[name]
+    
+    msg = f"Current stats for {name}:\n"
+    for stat, value in current.items():
+        msg += f"{stat}: {value}\n"
+    msg += "\nSelect which stat to modify:"
+    
+
+    change = easygui.buttonbox(msg, title = "MODIFY STAT", choices = list(current.keys()) + ["Cancel"])
+    if change == "Cancel":
+        return
+    
+    new_value = easygui.integerbox(f"Enter new value for {change} (1-25):", title = "NEW VALUE", min = 1, max = 25)
+    if new_value is None:
+        return
+    
+    card[name][change] = new_value
+    easygui.msgbox(f"{name}'s {change} has been updated to {new_value}", title = "SUCCESS")
+
+
 
 # This is a main menu, the user can manipulate all the functions here (eg., Display Card, Search Card, Remove Card, Add Card, Modify Card & Exit the program).
 def main():
