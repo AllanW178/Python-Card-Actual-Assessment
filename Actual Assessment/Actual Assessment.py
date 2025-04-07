@@ -332,7 +332,7 @@ def main():
             add_menu()
         # Check if the choice is Edit Card. If it is, conduct the 'Modify_menu()' function below.
         elif choice == 'Edit Card':
-            pass
+            edit_menu()
         # Check if the choice is exiting the program. If it is, the program will print a message and suspend.
         elif choice == '[EXIT]':
             easygui.msgbox("You have exited the program", title = "GOOBYE")
