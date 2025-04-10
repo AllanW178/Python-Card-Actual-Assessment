@@ -11,6 +11,7 @@ The buttons are 'Display Card', 'Search Card', 'Remove Card', 'Add Card', 'Edit 
 - Edit Card: This function allows users to edit/modify any card's information.
 - EXIT: This functions allows the users to exit the program. 
 
+
 '''
 
 # Import the Easygui module
@@ -138,7 +139,7 @@ def search_menu():
 def remove_menu():
     # If the system detects no cards available in the card list, it will print 'There is no cards available to remove.'.
     if not cards:
-        easygui.msgbox("There is no cards available to remove.", title = "NOTE")
+        easygui.msgbox("There is no card available to remove.", title = "NOTE")
         return
     
     # The line below will provide the buttons for the user to utilise. For example, if the user wants remove card '1', they can do so by clicking the button.
@@ -278,7 +279,7 @@ def edit_menu():
         return
     
     # This is where the users can edit their chosen card.
-    name = easygui.buttonbox("Choose a card to modify:", title = "EDIT CARD", choices = list(cards.keys()))
+    name = easygui.buttonbox("Choose a card to edit:", title = "EDIT CARD", choices = list(cards.keys()))
     if not name:
         return
     
@@ -286,7 +287,7 @@ def edit_menu():
     current = cards[name]
 
     # Show the previous stats; before any modifications
-    message = f"Current -\n[{name}]:\n"
+    message = f"Current -\n\n[{name}]:\n"
     for stat, value in current.items():
         message += f"{stat}: {value}\n"
     message += "\nSelect which one to edit:"
