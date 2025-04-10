@@ -94,7 +94,7 @@ cards = {
 def display_menu():
     # If there is no card in the card lists, print the text "There is no cards available to display. Maybe try to add one?"
     if not cards:
-        easygui.msgbox("There is no cards available to display.\n\nMaybe try to add one?")
+        easygui.msgbox("There is no card available to display.\n\nMaybe try to add one?")
         # Return back to the main page (Main function)
         return
     
@@ -116,7 +116,7 @@ def display_menu():
 def search_menu():
     # If there is no card in the card lists, print the text "There is no cards available to display.".
     if not cards:
-        easygui.msgbox("There is no cards available to search.", title = "NOTE")
+        easygui.msgbox("There is no card available to search.", title = "NOTE")
         return
 
     # Here are the options/buttons for the user to choose and search them.
@@ -233,7 +233,7 @@ def add_menu():
         try:
             speed = int(easygui.enterbox(f"Enter the speed for {add_card} (1-25): "))
             if speed < 1 or speed > 25:
-                easygui.msgbox(f"Your strength value must be between 1-25. Currentlyss, your value is {speed}.")
+                easygui.msgbox(f"Your strength value must be between 1-25. Currently, your value is {speed}.")
             else:
                 break
         except ValueError:
@@ -268,13 +268,13 @@ def add_menu():
     }
 
     # This is a final message to inform the users that their card has been added successfully. 
-    easygui.msgbox(f"Your card '{add_card}' has been successfully added!\n\nIf you would like to modify/edit anything for your card, head to the 'Edit Card' button.", title = "SUCCESS")
+    easygui.msgbox(f"Your card '{add_card}' has been successfully added!\n\nIf you would like to edit something for your card (eg., incorrect information), head to the 'Edit Card' button.", title = "SUCCESS")
 
 # This is the function for the users to modify any details in their card if they unintentionally typed a wrong information.
 def edit_menu():
     # This pre-check if there is any card exists inside the card list. If not, print a message and return to the Main function.
     if not cards:
-        easygui.msgbox("Sorry, there is no card available to modify.", title = "NOTE")
+        easygui.msgbox("Sorry, there is no card available to edit.", title = "NOTE")
         return
     
     # This is where the users can edit their chosen card.
@@ -286,13 +286,13 @@ def edit_menu():
     current = cards[name]
 
     # Show the previous stats; before any modifications
-    message = f"Current: {name}:\n"
+    message = f"Current -\n[{name}]:\n"
     for stat, value in current.items():
         message += f"{stat}: {value}\n"
     message += "\nSelect which one to edit:"
     
     # Here is where the users can choose which ability he/she wants to edit. The user can also exit ethe editing mode and return back to the main menu (Main function).
-    change = easygui.buttonbox(message, title = "MODIFY STAT", choices = list(current.keys()) + ["Cancel"])
+    change = easygui.buttonbox(message, title = "EDIT STAT", choices = list(current.keys()) + ["Cancel"])
     if change == "Cancel":
         return
     
@@ -311,8 +311,8 @@ def edit_menu():
     cards[name][change] = new_value
 
     # A final message to inform the users that the card has been edited successfully.
-    easygui.msgbox(f"{name}'s {change} has been updated to {new_value}", title = "SUCCESS")
-    
+    easygui.msgbox(f"{name}'s {change} has been edited to {new_value}", title = "SUCCESS")
+
 
 # This is a main menu, the user can manipulate all the functions here (eg., Display Card, Search Card, Remove Card, Add Card, Modify Card & Exit the program).
 def main():
