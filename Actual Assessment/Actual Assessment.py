@@ -1,19 +1,17 @@
 
 '''
-Essential introdution: When the users use this program, an interface will show up with six different buttons for them to utilise.
+
+Essential introdution: When the users use this program, an interface/GUI will show up with six different buttons for them to utilise.
 The buttons are 'Display Card', 'Search Card', 'Remove Card', 'Add Card', 'Edit Card' & 'Exiting the program'.
 
-
+- Display Card: This function is to display or store any cards (old & new) from the users. 
+- Search Card: This function allows the users to search any existing cards.
+- Remove Card: This function allows the users to remove any existing cards they don't want.
+- Add Card: This function allows users to add/upload any cards. (POV: I made a change for this)
+- Edit Card: This function allows users to edit/modify any card's information.
+- EXIT: This functions allows the users to exit the program. 
 
 '''
-
-
-
-
-
-
-
-
 
 # Import the Easygui module
 import easygui
@@ -154,11 +152,6 @@ def remove_menu():
     easygui.msgbox(f"{remove_card} has been successfully removed!", title = "SUCCESS")
 
 
-
-
-
-
-
 # [THE CODE BELOW ALLOWS THE USERS TO ADD THEIR OWN ABILITIES INSTEAD OF THE GIVEN ABILITIES (eg., Strength, Speed, Stealth & Cunning), WHICH ISN'T WHAT WE WANT; WE WANT THE USER TO ONLY ENTER THE VALUES FOR EACH OF THE GIVEN ABILITIES.]
 # [IN A NUTSHELL, THIS CODE IS DYNAMIC ESPECIALLY WHEN THE USERS WANT TO TYPE DOWN THEIR OWN ABILITIES AND VALUES.]
 
@@ -202,9 +195,6 @@ def remove_menu():
 #     easygui.msgbox(f"{add_card} has been successfully added!", title = "SUCCESS")
 
 # ----------------------------------------------------------------------------------------------------------
-
-
-
 
 # [I HAVE CHANGED TO A DIFFERENT VERSION THAT ALIGNS WITH THE REQUIREMENT]
 # [THE CODE BELOW IS A FIXED VERSION FROM THE CODE ABOVE THAT ONLY ALLOWS THE USERS TO ENTER THE VALUES FOR EACH ABILITY]:
@@ -282,26 +272,31 @@ def add_menu():
 
 # This is the function for the users to modify any details in their card if they unintentionally typed a wrong information.
 def edit_menu():
+    # This pre-check if there is any card exists inside the card list. If not, print a message and return to the Main function.
     if not cards:
         easygui.msgbox("Sorry, there is no card available to modify.", title = "NOTE")
         return
     
+    # This is where the users can edit their chosen card.
     name = easygui.buttonbox("Choose a card to modify:", title = "EDIT CARD", choices = list(cards.keys()))
     if not name:
         return
     
+    # Make a copy
     current = cards[name]
-    
-    msg = f"Current stats for {name}:\n"
-    for stat, value in current.items():
-        msg += f"{stat}: {value}\n"
-    msg += "\nSelect which stat to modify:"
-    
 
-    change = easygui.buttonbox(msg, title = "MODIFY STAT", choices = list(current.keys()) + ["Cancel"])
+    # Show the previous stats; before any modifications
+    message = f"Current: {name}:\n"
+    for stat, value in current.items():
+        message += f"{stat}: {value}\n"
+    message += "\nSelect which one to edit:"
+    
+    # Here is where the users can choose which ability he/she wants to edit. The user can also exit ethe editing mode and return back to the main menu (Main function).
+    change = easygui.buttonbox(message, title = "MODIFY STAT", choices = list(current.keys()) + ["Cancel"])
     if change == "Cancel":
         return
     
+    # Below is a while loop to check if the users enter the correct value between 1-25.
     while True:
         try:
             new_value = int(easygui.enterbox(f"Enter new value for {change} (1-25):", title = "NEW VALUE"))
@@ -312,10 +307,12 @@ def edit_menu():
         except ValueError:
             easygui.msgbox("Please enter a valid number from 1-25.", title = "NOTE")
     
+    # Updating the new value
     cards[name][change] = new_value
+
+    # A final message to inform the users that the card has been edited successfully.
     easygui.msgbox(f"{name}'s {change} has been updated to {new_value}", title = "SUCCESS")
-
-
+    
 
 # This is a main menu, the user can manipulate all the functions here (eg., Display Card, Search Card, Remove Card, Add Card, Modify Card & Exit the program).
 def main():
